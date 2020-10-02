@@ -30,16 +30,37 @@ class Snack
     $this->calories = ( (integer) $snackCalories ); // Convert $snackCalories to int. // Could instead use intval()
   }
 
+  // Example of a custom method...
   public function caramelize()
   {
     $this->calories *= 2; // Same as... $this->calories = $this->calories * 2;
   }
+
+  public function output()
+  { // Remember, anything OUTSIDE of PHP tags is echo'd!
+    // This means the below will be output WhEN this method is called!
+    ?>
+      <dl>
+        <dt>Snack Name</dt>
+        <dd><?php echo $this->name; ?></dd>
+        <dt>Snack Type</dt>
+        <dd><?php echo $this->type; ?></dd>
+        <dt>Snack Price</dt>
+        <dd><?php echo $this->price; ?></dd>
+        <dt>Snack Calories</dt>
+        <dd><?php echo $this->calories; ?></dd>
+      </dl>
+    <?php
+  }
 }
 
 // Initialize a Snack object, pass arguments to __construct.
-$mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, "200.907" );
-var_dump( $mySnack );
+// $mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, "200.907" );
+// var_dump( $mySnack );
 
-// Run a method from the object.
-$mySnack->caramelize();
-var_dump( $mySnack );
+// Run a method from the object. We use the "->" arrow for this.
+// $mySnack->caramelize();
+// var_dump( $mySnack );
+
+// Let's try outputting our snack...
+// $mySnack->output();
